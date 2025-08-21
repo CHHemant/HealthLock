@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <EditText
+        android:id="@+id/patientIdEdit"
+        android:hint="Patient ID"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    
+    <Spinner
+        android:id="@+id/accessLevelSpinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    
+    <Button
+        android:id="@+id/uploadBtn"
+        android:text="Upload Record"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    
+    <Button
+        android:id="@+id/shareBtn"
+        android:text="Share (Generate QR)"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    
+    <ImageView
+        android:id="@+id/qrImage"
+        android:layout_width="256dp"
+        android:layout_height="256dp"
+        android:layout_gravity="center"
+        android:padding="8dp"/>
+    
+    <Button
+        android:id="@+id/scanBtn"
+        android:text="Doctor: Scan QR"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    
+    <Button
+        android:id="@+id/logsBtn"
+        android:text="View Access Logs"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>
