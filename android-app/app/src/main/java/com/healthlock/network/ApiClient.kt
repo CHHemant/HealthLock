@@ -1,28 +1,32 @@
 package com.healthlock.network
 
-object ApiClient {
-    // Retrofit setup
+import com.healthlock.models.Record
+import retrofit2.Call
+import retrofit2.http.*
 
-    fun uploadRecord(filePath: String, accessLevel: String): String {
-        // Call POST /api/records/upload
-        // Return record ID
-        return "recordId"
-    }
+interface ApiService {
+    @POST("/api/records/upload")
+    @FormUrlEncoded
+    fun uploadRecord(
+        @Field("patientId") patientId: String,
+        @Field("file") file: String,
+        @Field("accessLevel") accessLevel: String
+    ): Call<Map<String, Any>>
 
-    fun generateToken(recordId: String, accessLevel: String): String {
-        // Call POST /api/access/generate-token
-        // Return token
-        return "JWT-Token"
-    }
+    @GET("/api/records/{patientId}")
+    fun getRecords(@Path("patientId") patientId: String): Call<List<Record>>
 
-    fun accessWithToken(token: String): String {
-        // Call POST /api/access/access-with-token
-        // Return decrypted file
-        return "decrypted file"
-    }
+    @POST("/api/access/generate-token")
+    @FormUrlEncoded
+    fun generateToken(
+        @Field("recordId") recordId: String,
+        @Field("accessLevel") accessLevel: String
+    ): Call<Map<String, String>>
 
-    fun fetchLogs(recordId: String): List<String> {
-        // Call GET /api/records/:id/logs
-        return emptyList()
-    }
+    @POST("/api/access/access-with-token")
+    @FormUrlEncoded
+    fun accessWithToken(
+        @Field("token") token: String,
+        @Field("userId") userId: String
+    ): Call<Map<String, Any>>
 }
